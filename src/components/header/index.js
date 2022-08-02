@@ -15,6 +15,7 @@ const Header = () => {
 
   const logoutBtnHnadler = () => {
     setAuthentication(false);
+    history("/login");
   };
 
   useEffect(() => {
