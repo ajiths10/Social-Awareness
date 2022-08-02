@@ -1,13 +1,33 @@
-import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { NavLink, Link, useNavigate } from "react-router-dom";
+import Hederlogo from "./logo.png";
+import Context from "../../context/Context";
 import "./header.css";
 
 const Header = () => {
+  const history = useNavigate();
+  const { setAuthentication, isAuthenticated } = useContext(Context);
+  const [isAuth, setIsAuth] = useState(false);
+
+  const loginBtnHnadler = () => {
+    history("/login");
+  };
+
+  const logoutBtnHnadler = () => {
+    setAuthentication(false);
+  };
+
+  useEffect(() => {
+    setIsAuth(isAuthenticated);
+    console.log('isAuth',isAuthenticated)
+  }, [isAuthenticated]);
+
   return (
     <div className="header-container">
       <div className="header-ul-container">
         <NavLink to="/" className="header-item">
-          logo
+          *logo
+          {/* <img src={Hederlogo} className="App-logo" alt="logo" /> */}
         </NavLink>
         <NavLink to="/" className="header-item">
           HOME
@@ -19,7 +39,15 @@ const Header = () => {
           CONTACT
         </NavLink>
       </div>
-      <button className="user-auth-btn">LOGIN</button>
+      {isAuth ? (
+        <button className="user-auth-btn" onClick={logoutBtnHnadler}>
+          LOGOUT
+        </button>
+      ) : (
+        <button className="user-auth-btn" onClick={loginBtnHnadler}>
+          LOGIN
+        </button>
+      )}
     </div>
   );
 };
