@@ -1,0 +1,73 @@
+.body-main-container{
+    display: flex;
+    flex-flow: row;
+}
+.post-main-container{
+    display: flex;
+    margin: 2rem;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    
+}
+
+.post-sub-container{
+    background-color: rgb(238, 238, 238);
+    width: 1000px;
+    display: flex;
+    margin: 2rem;
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border-radius: .8rem;
+}
+.postCard{
+    border-radius: 2rem; 
+}
+
+.post-subside-container{
+    background-color: rgb(241, 241, 241);
+    height: auto;
+    width: 30vh;
+    margin-top: 1rem;
+    border-radius: .8rem ;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column;
+    padding: 1rem;
+    
+}
+.post-subside-two-container{
+    display: flex;
+    width: inherit;
+    justify-content: center;
+    align-items: flex-start;
+    height: inherit;
+}
+.readmore-container{
+    display: flex;
+   justify-content: center;
+    height: inherit;
+    width: inherit;
+}
+
+.readmore-button{
+    background-color: blueviolet;
+    color: aliceblue;
+    font-family: inherit;
+    border: 1px;
+    height: 40px;
+    width: 100px;
+    border-radius: .8rem;
+    border-color: blueviolet;
+}
+.readmore-button:hover{
+    background-color: rgb(109, 20, 193);
+    cursor: pointer;
+}
+.post-subside-main-container{
+    margin-top: 8.5rem;
+}

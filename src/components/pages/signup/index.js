@@ -17,24 +17,6 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Context from "../../../context/Context";
 
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="#">
-        Social Awareness
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 const theme = createTheme();
 
 const SignUp = () => {
@@ -54,7 +36,7 @@ const SignUp = () => {
       .required("Password is required"),
     ConfirmPassword: yup
       .string()
-      .oneOf([yup.ref("password"), null], "Passwords must match") 
+      .oneOf([yup.ref("password"), null], "Passwords must match")
       .required("required"),
   });
 
@@ -212,7 +194,6 @@ const SignUp = () => {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );
