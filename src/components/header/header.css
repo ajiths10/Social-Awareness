@@ -18,10 +18,36 @@
 .user-auth-btn {
     margin-right: 30px;
     justify-content: flex-end;
-    
+    height: 32px;
+    width: 100px;
+    font-family: inherit;
+    font-weight: inherit;
+    background-color: blueviolet;
+    border: 1px;
+    border-color: blueviolet;
+    color: white;
+    border-radius: .5rem;
+    border: none;
+}
+.user-auth-btn:hover{
+    background-color: rgb(113, 21, 199);
+    cursor: pointer;
 }
 .header-item {
     text-decoration: none;
     color: black;
     font-weight: bold;
+}
+.header-post-button{
+    border: none;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+}
+.header-post-button:hover{
+    cursor: pointer;
+}
+.logo{
+    height: 70px;
+    margin: 10px;
 }

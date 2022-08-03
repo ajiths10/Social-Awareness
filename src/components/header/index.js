@@ -6,7 +6,8 @@ import "./header.css";
 
 const Header = () => {
   const history = useNavigate();
-  const { setAuthentication, isAuthenticated } = useContext(Context);
+  const { setAuthentication, isAuthenticated, setIsPopup, isPopup } =
+    useContext(Context);
   const [isAuth, setIsAuth] = useState(false);
 
   const loginBtnHnadler = () => {
@@ -20,21 +21,29 @@ const Header = () => {
 
   useEffect(() => {
     setIsAuth(isAuthenticated);
-    console.log('isAuth',isAuthenticated)
+    console.log("isAuth", isAuthenticated);
   }, [isAuthenticated]);
+
+  const postpopupHandler = (e) => {
+    e.preventDefault();
+    console.log("isAuth", isPopup);
+    setIsPopup(!isPopup);
+  };
 
   return (
     <div className="header-container">
       <div className="header-ul-container">
         <NavLink to="/" className="header-item">
-          *logo
-          {/* <img src={Hederlogo} className="App-logo" alt="logo" /> */}
+          
+          <img src={Hederlogo} className="logo" alt="logo" />
         </NavLink>
         <NavLink to="/" className="header-item">
           HOME
         </NavLink>
-        <NavLink to="/posts" className="header-item">
-          POSTS
+        <NavLink to="/" className="header-item">
+          <button onClick={postpopupHandler} className="header-post-button">
+            POST EVENT
+          </button>
         </NavLink>
         <NavLink to="/contactus" className="header-item">
           CONTACT

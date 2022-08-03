@@ -13,9 +13,9 @@
 
 .post-sub-container{
     background-color: rgb(238, 238, 238);
-    width: 1000px;
+    width: 900px;
     display: flex;
-    margin: 2rem;
+    margin: 3rem;
     padding: 2rem;
     align-items: center;
     justify-content: center;
@@ -50,8 +50,10 @@
 .readmore-container{
     display: flex;
    justify-content: center;
+   align-items: center;
     height: inherit;
     width: inherit;
+    flex-flow: column;
 }
 
 .readmore-button{
@@ -69,5 +71,5 @@
     cursor: pointer;
 }
 .post-subside-main-container{
-    margin-top: 8.5rem;
+    margin-top: 10rem;
 }

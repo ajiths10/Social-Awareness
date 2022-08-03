@@ -3,6 +3,7 @@ import Context from "./Context";
 
 const ContextProvider = (props) => {
 const [isAuth,setIsAuth] = useState(false);
+const [isPopup, setIsPopup] = useState(false);
 
     const setAuth = (payload) => {
         setIsAuth(payload)
@@ -11,7 +12,9 @@ const [isAuth,setIsAuth] = useState(false);
     const contextData = {
        message: "Social Awareness",
        setAuthentication: setAuth,
-       isAuthenticated: isAuth
+       isAuthenticated: isAuth,
+       setIsPopup,
+       isPopup
       };
 
  return (

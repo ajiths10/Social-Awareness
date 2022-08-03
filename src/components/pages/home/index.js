@@ -2,8 +2,7 @@ import React from "react";
 import Posts from "./posts";
 import "./posts.css";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
-import { red } from "@mui/material/colors";
-import { NavLink } from "react-router-dom";
+import PostPopup from "./PostPopup";
 
 const Home = () => {
   const arrayValue = [
@@ -71,50 +70,79 @@ const Home = () => {
   };
 
   return (
-    <div className="body-main-container">
-      <div className="post-main-container">
-        <h2>Social Awareness</h2>
-        <div className="post-sub-container">
-          {arrayValue.map((buscat) => {
-            return <Posts data={buscat} />;
-          })}
-        </div>
-      </div>
-      <div>
-      <div className="post-subside-main-container"> 
-        <div className="post-subside-container">
-          <div>
-            <span>
-              <h4>
-                <DoneAllIcon color="success" /> Raise Your Voice
-              </h4>
-            </span>
-            <span>
-              <h4>
-                <DoneAllIcon color="success" /> Stop Discrimination
-              </h4>
-            </span>
-            <span>
-              <h4>
-                <DoneAllIcon color="success" /> Aware People
-              </h4>
-            </span>
+    <>
+      <div className="body-main-container">
+        <div className="post-main-container">
+          <h1>Social Awareness</h1>
+          <div className="post-sub-container">
+            {arrayValue.map((buscat) => {
+              return <Posts data={buscat} />;
+            })}
           </div>
         </div>
-        
-          <div className="post-subside-container">
-            <div className="post-subside-two-container">
-              <h4>A Cause for change</h4>
+        <div>
+          <div className="post-subside-main-container">
+            <div className="post-subside-container">
+              <div>
+                <span>
+                  <h4>
+                    <DoneAllIcon color="success" /> Raise Your Voice
+                  </h4>
+                </span>
+                <span>
+                  <h4>
+                    <DoneAllIcon color="success" /> Stop Discrimination
+                  </h4>
+                </span>
+                <span>
+                  <h4>
+                    <DoneAllIcon color="success" /> Aware People
+                  </h4>
+                </span>
+              </div>
             </div>
-            <div className="readmore-container">
-              <button onClick={readMoreHandler} className="readmore-button">
-                Read more
-              </button>
+
+            <div className="post-subside-container">
+              <div className="post-subside-two-container">
+                <h4>A Cause for change</h4>
+              </div>
+              <div className="readmore-container">
+                <button onClick={readMoreHandler} className="readmore-button">
+                  Read more
+                </button>
+              </div>
+            </div>
+            <div className="post-subside-container">
+              <div className="post-subside-two-container">
+                <h4>About US</h4>
+              </div>
+              <div className="readmore-container">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste
+                  soluta perferendis eius iusto vel illo repellat ducimus,
+                  aperiam doloribus. Dolores sequi culpa minima quam nobis
+                  repudiandae omnis tempore excepturi. Tenetur!
+                </p>
+              </div>
+            </div>
+            <div className="post-subside-container">
+              <div className="post-subside-two-container">
+                <h4>Get In Touch</h4>
+              </div>
+              <div className="readmore-container">
+                <p>
+                  Please contact us through email or phone number for further
+                  information and queries.
+                </p>
+                <p>Call: 012 345 6789 </p>
+                <p>E-mail: Example@gmail.com</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <PostPopup />
+    </>
   );
 };
 

@@ -31,7 +31,7 @@ const ContactUs = () => {
       .string("Enter your email")
       .email("Enter a valid email")
       .required("Email is required"),
-    phonenumber: yup.number("Number only").min(10).max(12),
+    phonenumber: yup.number("Number only"),
     message: yup.string("Enter message").required("required"),
   });
 
@@ -45,8 +45,6 @@ const ContactUs = () => {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       //alert(JSON.stringify(values, null, 2));
-      history("/");
-      setAuthentication(true);
     },
   });
 
