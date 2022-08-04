@@ -47,7 +47,7 @@ const Posts = (props) => {
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: randomColor() }} aria-label="recipe">
-              {props.data.avatar}
+              {props.data.avatar? props.data.avatar : ''}
             </Avatar>
           }
           action={
@@ -55,18 +55,18 @@ const Posts = (props) => {
               <MoreVertIcon />
             </IconButton>
           }
-          title={props.data.username}
-          subheader={props.data.date}
+          title={props.data.username? props.data.username : ''}
+          subheader={props.data.date? props.data.date : ''}
         />
         <CardMedia
           component="img"
           height="194"
-          image={props.data.imageUrl}
+          image={props.data.imageUrl? props.data.imageUrl : ''}
           alt="Paella dish"
         />
         <CardContent>
           <Typography variant="body1" color="text.secondary">
-            {props.data.typo1}
+            {props.data.typo1? props.data.typo1 : ''}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
@@ -88,8 +88,8 @@ const Posts = (props) => {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph>Method:</Typography>
-            <Typography paragraph>{props.data.typo2}</Typography>
-            <Typography>{props.data.typo3}</Typography>
+            <Typography paragraph>{props.data.typo2? props.data.typo2 : ''}</Typography>
+            <Typography>{props.data.typo3? props.data.typo3 : ''}</Typography>
           </CardContent>
         </Collapse>
       </Card>
