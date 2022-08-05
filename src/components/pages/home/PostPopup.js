@@ -22,7 +22,7 @@ const PostPopup = () => {
   const validationSchema = yup.object({
     title: yup.string().required("required"),
     category: yup.string().required("required"),
-    location: yup.string().required("required"),
+    imageurl: yup.string().required("required"),
     message: yup.string("Enter message").required("required"),
   });
 
@@ -30,7 +30,7 @@ const PostPopup = () => {
     initialValues: {
       title: "",
       category: "",
-      location: "",
+      imageurl: "",
       message: "",
     },
     validationSchema: validationSchema,
@@ -105,18 +105,18 @@ const PostPopup = () => {
               <Grid item sm={12}>
                 <TextField
                   autoComplete="given-name"
-                  name="location"
+                  name="Image Url"
                   required
                   fullWidth
-                  id="location"
-                  label="Location"
+                  id="imageurl"
+                  label="Image Url"
                   autoFocus
-                  value={formik.values.location}
+                  value={formik.values.imageurl}
                   onChange={formik.handleChange}
                   error={
-                    formik.touched.location && Boolean(formik.errors.location)
+                    formik.touched.imageurl && Boolean(formik.errors.imageurl)
                   }
-                  helperText={formik.touched.location && formik.errors.location}
+                  helperText={formik.touched.imageurl && formik.errors.imageurl}
                 />
               </Grid>
               <Grid item sm={12}>
