@@ -6,9 +6,13 @@ import "./header.css";
 
 const Header = () => {
   const history = useNavigate();
-  const { setAuthentication, isAuthenticated, setIsPopup, isPopup } =
+  const { setAuthentication, isAuthenticated, setIsPopup, isPopup, loadUser } =
     useContext(Context);
   const [isAuth, setIsAuth] = useState(false);
+
+  useEffect(() => {
+    loadUser();
+  }, []);
 
   const loginBtnHnadler = () => {
     history("/login");
@@ -34,7 +38,6 @@ const Header = () => {
     <div className="header-container">
       <div className="header-ul-container">
         <NavLink to="/" className="header-item">
-          
           <img src={Hederlogo} className="logo" alt="logo" />
         </NavLink>
         <NavLink to="/" className="header-item">

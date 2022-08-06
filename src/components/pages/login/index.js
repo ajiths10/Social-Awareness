@@ -44,6 +44,7 @@ const Login = () => {
       //alert(JSON.stringify(values, null, 2));
       history("/");
       setAuthentication(true);
+      localStorage.setItem('UserEmail',values.email);
     },
   });
 
