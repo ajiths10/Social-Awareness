@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Context from "../../../context/Context";
+import Context from "../../../context/authContext/Context";
 import MessageIcon from "@mui/icons-material/Message";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 

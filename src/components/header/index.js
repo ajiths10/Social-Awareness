@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import Hederlogo from "./logo.png";
-import Context from "../../context/Context";
+import Context from "../../context/authContext/Context";
 import "./header.css";
+import CommonContext from "../../context/commonContext/CommonContext";
 
 const Header = () => {
   const history = useNavigate();
+  const { setAlert } = useContext(CommonContext); 
   const { setAuthentication, isAuthenticated, setIsPopup, isPopup, loadUser } =
     useContext(Context);
   const [isAuth, setIsAuth] = useState(false);
@@ -20,6 +22,7 @@ const Header = () => {
 
   const logoutBtnHnadler = () => {
     setAuthentication(false);
+    setAlert({ message: "Logout Successfully", type: 1 });
     history("/login");
   };
 

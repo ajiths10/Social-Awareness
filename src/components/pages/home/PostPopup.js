@@ -7,7 +7,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import Context from "../../../context/Context";
+import Context from "../../../context/authContext/Context";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import TextareaAutosize from "@mui/material/TextareaAutosize";

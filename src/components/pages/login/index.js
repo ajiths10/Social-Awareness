@@ -15,12 +15,14 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Context from "../../../context/Context";
+import Context from "../../../context/authContext/Context";
+import CommonContext from "../../../context/commonContext/CommonContext";
 
 const theme = createTheme();
 
 const Login = () => {
   const history = useNavigate();
+  const { setAlert } = useContext(CommonContext);
   const { setAuthentication, isAuthenticated } = useContext(Context);
 
   const validationSchema = yup.object({
@@ -44,7 +46,8 @@ const Login = () => {
       //alert(JSON.stringify(values, null, 2));
       history("/");
       setAuthentication(true);
-      localStorage.setItem('UserEmail',values.email);
+      localStorage.setItem("UserEmail", values.email);
+      setAlert({ message: "Successfully login", type: 1 });
     },
   });
 
