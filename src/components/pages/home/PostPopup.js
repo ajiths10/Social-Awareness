@@ -140,9 +140,9 @@ const PostPopup = () => {
                   helperText={formik.touched.message && formik.errors.message}
                 />
               </Grid>
-              <DialogActions>
+              <DialogActions>   
                 <Button onClick={handleClose}>Cancel</Button>
-                <Button type="submit">submit</Button>
+                <Button type="submit" variant="contained">submit</Button>
               </DialogActions>
             </Grid>
           </Box>
