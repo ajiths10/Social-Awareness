@@ -18,12 +18,14 @@ import * as yup from "yup";
 import Context from "../../../context/authContext/Context";
 import MessageIcon from "@mui/icons-material/Message";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
+import CommonContext from "../../../context/commonContext/CommonContext";
 
 const theme = createTheme();
 
 const ContactUs = () => {
   const history = useNavigate();
   const { setAuthentication, isAuthenticated } = useContext(Context);
+  const { setAlert } = useContext(CommonContext);
 
   const validationSchema = yup.object({
     name: yup.string("Enter your first name").required("required"),
@@ -45,6 +47,7 @@ const ContactUs = () => {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       //alert(JSON.stringify(values, null, 2));
+      setAlert({message: "Form Submited Successfully", type: 1})
     },
   });
 
