@@ -75,8 +75,8 @@ const Home = () => {
         <div className="post-main-container">
           <h1>Social Awareness</h1>
           <div className="post-sub-container">
-            {arrayValue.map((buscat) => {
-              return <Posts data={buscat} />;
+            {arrayValue.map((buscat, index) => {
+              return <Posts data={buscat} key={index} />;
             })}
           </div>
         </div>

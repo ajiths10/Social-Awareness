@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -28,17 +29,21 @@ const ExpandMore = styled((props) => {
 }));
 
 const Posts = (props) => {
-  const [expanded, setExpanded] = React.useState(false);
-
+  const [expanded, setExpanded] = useState(false);
+  const [isFav, setIsFav] = useState(false);
   function randomColor() {
-    let hex = Math.floor(Math.random() * 0xFFFFFF);
+    let hex = Math.floor(Math.random() * 0xffffff);
     let color = "#" + hex.toString(16);
-  
+
     return color;
   }
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const favoriteButtonHandler = () => {
+    setIsFav(true);
   };
 
   return (
@@ -47,7 +52,7 @@ const Posts = (props) => {
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: randomColor() }} aria-label="recipe">
-              {props.data.avatar? props.data.avatar : ''}
+              {props.data.avatar ? props.data.avatar : ""}
             </Avatar>
           }
           action={
@@ -55,23 +60,30 @@ const Posts = (props) => {
               <MoreVertIcon />
             </IconButton>
           }
-          title={props.data.username? props.data.username : ''}
-          subheader={props.data.date? props.data.date : ''}
+          title={props.data.username ? props.data.username : ""}
+          subheader={props.data.date ? props.data.date : ""}
         />
         <CardMedia
           component="img"
           height="194"
-          image={props.data.imageUrl? props.data.imageUrl : ''}
+          image={props.data.imageUrl ? props.data.imageUrl : ""}
           alt="Paella dish"
         />
         <CardContent>
           <Typography variant="body1" color="text.secondary">
-            {props.data.typo1? props.data.typo1 : ''}
+            {props.data.typo1 ? props.data.typo1 : ""}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
+            {isFav ? (
+              <FavoriteIcon
+                onClick={favoriteButtonHandler}
+                style={{ color: "red" }}
+              />
+            ) : (
+              <FavoriteIcon onClick={favoriteButtonHandler} />
+            )}
           </IconButton>
           <IconButton aria-label="share">
             <ShareIcon />
@@ -88,8 +100,10 @@ const Posts = (props) => {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph>Method:</Typography>
-            <Typography paragraph>{props.data.typo2? props.data.typo2 : ''}</Typography>
-            <Typography>{props.data.typo3? props.data.typo3 : ''}</Typography>
+            <Typography paragraph>
+              {props.data.typo2 ? props.data.typo2 : ""}
+            </Typography>
+            <Typography>{props.data.typo3 ? props.data.typo3 : ""}</Typography>
           </CardContent>
         </Collapse>
       </Card>
