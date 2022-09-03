@@ -16,12 +16,14 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Context from "../../../context/authContext/Context";
+import CommonContext from "../../../context/commonContext/CommonContext";
 
 const theme = createTheme();
 
 const SignUp = () => {
   const history = useNavigate();
   const { setAuthentication, isAuthenticated } = useContext(Context);
+  const { setAlert } = useContext(CommonContext);
 
   const validationSchema = yup.object({
     firstName: yup.string("Enter your first name").required("required"),
@@ -55,6 +57,7 @@ const SignUp = () => {
       //alert(JSON.stringify(values, null, 2));
       history("/");
       setAuthentication(true);
+      setAlert({ message: "Signup successfully", type: 1 });
     },
   });
 
