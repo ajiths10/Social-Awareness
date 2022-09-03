@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -38,6 +38,7 @@ const SignUp = () => {
       .string()
       .oneOf([yup.ref("password"), null], "Passwords must match")
       .required("required"),
+    agree_terms: yup.boolean().oneOf([true], "required"),
   });
 
   const formik = useFormik({
@@ -47,6 +48,7 @@ const SignUp = () => {
       email: "",
       password: "",
       ConfirmPassword: "",
+      agree_terms: false,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -169,13 +171,24 @@ const SignUp = () => {
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormControlLabel
-                  control={
-                    <Checkbox value="allowExtraEmails" color="primary" />
-                  }
-                  label="I agree to the terms of services."
+                <Checkbox
+                  value="allowExtraEmails"
+                  color="primary"
+                  name="agree_terms"
+                  onChange={formik.handleChange}
                 />
+                I agree to the terms of services.
               </Grid>
+              <Typography
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  width: "100%",
+                  color: "red",
+                }}
+              >
+                {formik.touched.agree_terms && formik.errors.agree_terms}
+              </Typography>
             </Grid>
             <Button
               type="submit"
