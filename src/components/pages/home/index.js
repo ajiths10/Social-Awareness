@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useRef } from "react";
 import Posts from "./posts";
 import "./posts.css";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 import PostPopup from "./PostPopup";
 import QrCodeGenerator from "../../QrCodeGenerator";
+import html2canvas from "html2canvas";
+import { jsPDF } from "jspdf";
+import { useReactToPrint } from "react-to-print";
+
+const Button = (props) => {
+  const { title, icon, onClick } = props;
+  return (
+    <button type="button" className="" onClick={onClick}>
+      <span className="">{title}</span>
+    </button>
+  );
+};
 
 const Home = () => {
+  const printRef = useRef(null);
+
   const arrayValue = [
     {
       avatar: "A",
@@ -68,6 +82,40 @@ const Home = () => {
       "https://www.google.com/search?q=social+awareness+news&rlz=1C5CHFA_enAU969AU969&sxsrf=ALiCzsZIFPk9Rfyb5kZ2BCnzwJr-XHn-ig:1658558267552&source=lnms&tbm=nws&sa=X&ved=2ahUKEwjJr4GDs475AhVW2DgGHVveCRIQ_AUoA3oECAEQBQ&biw=1920&bih=944&dpr=1";
     link.target = "_blank";
     link.click();
+  };
+
+  const handleDownload = async () => {
+    if (printRef?.current) {
+      document.getElementById("divcontents").style.visibility = "visible";
+      let element = printRef.current;
+      const canvas = await html2canvas(element);
+      const data = canvas.toDataURL("image/png");
+
+      const pdf = new jsPDF();
+      const imgProperties = pdf.getImageProperties(data);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
+
+      pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save("print.pdf");
+      document.getElementById("divcontents").style.visibility = "hidden";
+    }
+  };
+
+  const usehandlePrint = useReactToPrint({
+    content: () => printRef.current,
+  });
+
+  const handlePrint = () => {
+    document.getElementById("divcontents").style.visibility = "visible";
+    usehandlePrint();
+    document.getElementById("divcontents").style.visibility = "hidden";
+  };
+
+  const handleView = async () => {
+    let url =
+      "https://www.google.com/search?q=social+awareness+news&rlz=1C5CHFA_enAU969AU969&sxsrf=ALiCzsZIFPk9Rfyb5kZ2BCnzwJr-XHn-ig:1658558267552&source=lnms&tbm=nws&sa=X&ved=2ahUKEwjJr4GDs475AhVW2DgGHVveCRIQ_AUoA3oECAEQBQ&biw=1920&bih=944&dpr=1";
+    window.open(url, "_blank")?.focus();
   };
 
   return (
@@ -140,12 +188,25 @@ const Home = () => {
                 <span>
                   <QrCodeGenerator value={`Social Awareness`} size={140} />
                 </span>
+                <span>
+                  <div className="">
+                    <Button title={"Print"} onClick={handlePrint} />
+                    <Button title={"Download"} onClick={handleDownload} />
+                    <Button title={"View"} onClick={handleView} />
+                  </div>
+                </span>
               </div>
             </div>
           </div>
         </div>
       </div>
       <PostPopup />
+
+      <div ref={printRef} className="qrcode-hiiden-boddy" id="divcontents">
+        <span className="">
+          <QrCodeGenerator value={`Social Awareness`} size={600} />
+        </span>
+      </div>
     </>
   );
 };

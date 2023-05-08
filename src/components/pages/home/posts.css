@@ -73,3 +73,7 @@
 .post-subside-main-container{
     margin-top: 10rem;
 }
+
+.qrcode-hiiden-boddy{
+    visibility: hidden;
+}
