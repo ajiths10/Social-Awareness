@@ -3,6 +3,7 @@ import Posts from "./posts";
 import "./posts.css";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 import PostPopup from "./PostPopup";
+import QrCodeGenerator from "../../QrCodeGenerator";
 
 const Home = () => {
   const arrayValue = [
@@ -136,6 +137,9 @@ const Home = () => {
                 </p>
                 <p>Call: 012 345 6789 </p>
                 <p>E-mail: Example@gmail.com</p>
+                <span>
+                  <QrCodeGenerator value={`Social Awareness`} size={140} />
+                </span>
               </div>
             </div>
           </div>
